@@ -4,15 +4,15 @@ class Main {
       inventory.createItem("a");
       inventory.createItem("b");
       inventory.createItem("c");
-      String itemString = inventory.viewInventory();
-      System.out.println("Current inventory has: " + itemString); // should get a b c
+      System.out.println("Current inventory has: " + inventory.viewInventory()); // should get a b c
       inventory.editItem("a", "new_a");
-      itemString = inventory.viewInventory();
-      System.out.println("Current inventory has: " + itemString); // should get new_a b c
+      System.out.println("Current inventory has: " + inventory.viewInventory()); // should get new_a b c
       inventory.deleteItem("c","");
-      System.out.println("Current inventory has: " + itemString); // should get new_a b
+      System.out.println("Current inventory has: " + inventory.viewInventory()); // should get new_a b
       String deletionComment = inventory.deleteItem("new_a","new_a deleted");
-      System.out.println("Current inventory has: " + itemString); // should get b
+      System.out.println("Current inventory has: " + inventory.viewInventory()); // should get b
       System.out.println("Deletion comment is: " + deletionComment);
+      inventory.undeleteItem();
+      System.out.println("Current inventory has: " + inventory.viewInventory()); // should get new_a b
     }
   }
