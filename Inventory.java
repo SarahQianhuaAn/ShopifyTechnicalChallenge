@@ -6,6 +6,9 @@ public class Inventory{
     // an ArrayList data attribute that represents the list of inventory items
     private ArrayList<Item> inventory;
 
+    private Item deletedItem;
+    private int deletedItemNum;
+
     // construct an empty inventory
     public Inventory(){
         this.inventory = new ArrayList<Item>();
@@ -28,13 +31,20 @@ public class Inventory{
     }
 
     // delete an item based on its name
-    public void deleteItem(String itemName){
+    public String deleteItem(String itemName, String comment){
         for(int itemNum = 0; itemNum < inventory.size(); itemNum++) {
             if (inventory.get(itemNum).name.equals(itemName)){
+                deletedItem = inventory.get(itemNum);
+                deletedItemNum = itemNum;
                 inventory.remove(itemNum);
                 break;
             }
         }
+        return comment;
+    }
+
+    public void undeleteItem(){
+        inventory.add(deletedItemNum, deletedItem);
     }
 
     // return a string that contains the list of items in the inventory
